@@ -4,28 +4,16 @@
 
 This extension allows you to add **Angular2 typescript files including snippets** to your VS Code project.
 
-> Inspired by [Dominik Kundel](https://github.com/dkundel)'s [Advanced New File - Visual Studio Code Extension](https://github.com/dkundel/vscode-new-file) and [John Papa](https://github.com/johnpapa)'s [Angular 2 TypeScript Snippets for VS Code](https://github.com/johnpapa/vscode-angular2-snippets).
+> Inspired by [Sebastian Baar](https://github.com/sebastianbaar)'s [Angular2 Add Files for VS Code](https://github.com/sebastianbaar/vscode-add-angular2-files).
 
 ## Changelog
 
 ### 1.0.0
 **Now Updated for Angular 2.0.0 release** 
 
-### 0.2.1
-* **icon** add an icon 
-
-### 0.2.0
-
-* **@angular** update to Angular2 rc.6
-* **tests** add tests (.spec-files)
-
-## Features
-
-Right click on a file or a folder in your current project. There are two options added to the context menu `Add Angular2 Files` and `Add Angular2 Files (Extended)`:
-
 ### Add Angular2 Files
 
-This command adds the following files to your new folder (let's assume you typed in `home`):
+This command adds the following files to your new folder (let's assume you typed in `home --c t css spec f`):
 ```
 home/home.component.ts
 home/home.component.html
@@ -33,23 +21,64 @@ home/home.component.css
 home/home.component.spec.ts
 ```
 
-![alt text](https://cloud.githubusercontent.com/assets/7135276/16797373/83bd9ffc-48e7-11e6-9ac0-9874a4387a3a.gif "Add Angular2 Files")
-
-### Add Angular2 Files (Extended)
-
-This command adds the following extended files to your new folder (let's assume you typed in `home`):
+This command adds the following extended files to your new folder (let's assume you typed in `home --c t css spec s m f`):
 ```
 home/home.component.ts
 home/home.component.html
 home/home.component.css
 home/home.component.spec.ts
 home/shared/home.service.ts
-home/shared/home.ts
+home/shared/home.model.ts
 ```
 
-![alt text](https://cloud.githubusercontent.com/assets/7135276/16797375/861bd246-48e7-11e6-8cc8-2fc688197388.gif "Add Angular2 Files (Extended)")
+This command adds the following extended files to your new folder (let's assume you typed in `home --c t css spec s m M r f`):
+```
+home/home.component.ts
+home/home.component.html
+home/home.component.css
+home/home.component.spec.ts
+home/shared/home.service.ts
+home/shared/home.model.ts
+home/home.module.ts
+home/home.routing.ts
+```
 
-**The naming of the files as well as the (boilerplate) snippets are based on the [official Angular2 Style Guide](https://angular.io/docs/ts/latest/guide/style-guide.html)**
+This command adds the following extended files to your new folder (let's assume you typed in `home --all f`):
+```
+home/home.component.ts
+home/home.component.html
+home/home.component.css
+home/home.component.spec.ts
+home/shared/home.service.ts
+home/shared/home.model.ts
+home/home.module.ts
+home/home.routing.ts
+```
+
+This command adds the following extended files to your new folder (let's assume you typed in `home --all`):
+```
+home.component.ts
+home.component.html
+home.component.css
+home.component.spec.ts
+shared/home.service.ts
+shared/home.model.ts
+home.module.ts
+home.routing.ts
+```
+
+## Options
+
+1. -c | component: component.ts
+2. -t | template: component.html
+3. -C | css: component.css
+4. -s | service: service.ts
+5. -S | spec: component.spec.ts
+6. -m | model: model.ts
+7. -M | moudle: moudle.ts
+8. -r | routing: routing.ts
+9. -f | folder: add folder
+10. -ns | noshared: Default model.ts and service.ts in the shared directory
 
 ## Installation
 
@@ -60,16 +89,9 @@ home/shared/home.ts
 5. Type `add angular2 files` and press enter
 6. Reload Visual Studio Code
 
-# Disclaimer
-
-**Important:** This extension due to the nature of it's purpose will create
-files on your hard drive and if necessary create the respective folder structure.
-While it should not override any files during this process, I'm not giving any guarantees
-or take any responsibility in case of lost data. 
-
 # Contributors
 
-[Sebastian Baar](https://github.com/sebastianbaar)
+[Front Y](https://github.com/winpzs)
 
 # License
 
