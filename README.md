@@ -80,15 +80,6 @@ home.routing.ts
 9. -f | folder: add folder
 10. -ns | noshared: Default model.ts and service.ts in the shared directory
 
-## Installation
-
-1. Install Visual Studio Code 1.3.0 or higher
-2. Launch Code
-3. From the command palette `Ctrl`-`Shift`-`P` (Windows, Linux) or `Cmd`-`Shift`-`P` (OSX)
-4. Select `Install Extension`
-5. Type `add angular2 files` and press enter
-6. Reload Visual Studio Code
-
 # Contributors
 
 [Front Y](https://github.com/winpzs)
