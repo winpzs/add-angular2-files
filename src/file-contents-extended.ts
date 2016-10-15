@@ -1,3 +1,5 @@
+import { IInput } from './input';
+
 export class FileContentsExtended {
 
     private camelCase (input: string): string {
@@ -12,28 +14,28 @@ export class FileContentsExtended {
         return inputUpperCase;
     }
 
-    public componentContent(inputName: string): string {
+    public componentContent(inputName:string): string {
         var inputUpperCase: string = this.inputUpperCase(inputName);
         
-        var componentContent: string = "import { Component, OnInit } from '@angular/core';\n\n" +
+        var componentContent: string = "import { Component, OnInit, Input, Output } from '@angular/core';\n\n" +
             "import { " + inputUpperCase + " } from './shared/" + inputName + ".model';\n" +
             "import { " + inputUpperCase + "Service } from './shared/" + inputName + ".service';\n" +
             "\n" +
             "@Component({\n" +
             "\tmoduleId: module.id,\n" +
             "\tselector: '" + inputName + "',\n" +
+            "\tstyleUrls:['" + inputName + ".component.css'],\n" +
             "\ttemplateUrl: '" + inputName + ".component.html',\n" +
-            "\tproviders: [" + inputUpperCase + "Service]\n" +
             "})\n" +
             "\n" +
             "export class " + inputUpperCase + "Component implements OnInit {\n" +
-            "\t"+ this.camelCase(inputName) +": "+ inputUpperCase +"[] = [];\n" +
+            "\t"+ inputUpperCase +": "+ inputUpperCase +"[] = [];\n" +
             "\n" +
-            "\tconstructor(private " + this.camelCase(inputName) + "Service: " + inputUpperCase + "Service) { }\n" +
+            "\tconstructor(private " + inputUpperCase + "Service: " + inputUpperCase + "Service) { }\n" +
             "\n" +
             "\tngOnInit() {\n" +
-            "\t\tthis."+ this.camelCase(inputName) + "Service.getList().subscribe((res) => {\n" +
-            "\t\t\tthis."+ this.camelCase(inputName) +" = res;\n" +
+            "\t\tthis."+ inputUpperCase + "Service.getList().subscribe((res) => {\n" +
+            "\t\t\tthis."+ inputUpperCase +" = res;\n" +
             "\t\t});\n" +
             "\t}\n" +
             "}";
@@ -128,5 +130,49 @@ export class FileContentsExtended {
             "}\n";
         return specContent;
     }
+
+    public moduleContent(inputName: string): string {
+        var inputUpperCase: string = inputName.charAt(0).toUpperCase() + inputName.slice(1);
+        var content: string = ["import { NgModule } from \'@angular/core\';",
+            "import { CommonModule } from \'@angular/common\';",
+            "import { FormsModule }   from \'@angular/forms\';\n",
+            "import { "+inputUpperCase+"Service } from \'./shared/"+inputName+".service\';",
+            "import { "+inputUpperCase+"Routing } from \'./"+inputName+".routing\';",
+            "import { "+inputUpperCase+"Component } from \'./"+inputName+".component\';\n",
+            "@NgModule({",
+            "    imports: [",
+            "        CommonModule,",
+            "        FormsModule,",
+            "        "+inputUpperCase+"Routing",
+            "    ],",
+            "    exports: [],",
+            "    declarations: [",
+            "        "+inputUpperCase+"Component",
+            "    ],",
+            "    providers: ["+inputUpperCase+"Service]",
+            "})",
+            "export class "+inputUpperCase+"Module { }"].join("\n");
+        return content;
+    }
+
+    public routingContent(inputName: string): string {
+        var inputUpperCase: string = inputName.charAt(0).toUpperCase() + inputName.slice(1);
+        var content: string = ["import { ModuleWithProviders } from \'@angular/core\';",
+            "import { Routes, RouterModule } from \'@angular/router\';\n",
+            "import { "+inputUpperCase+"Component } from \'./"+inputName+".component\';\n",
+            "const routes: Routes = [",
+            "    {",
+            "        path: \'\',",
+            "        component: "+inputUpperCase+"Component",
+            "    },",
+            "    {",
+            "        path:\'"+inputName+"\',",
+            "        component: "+inputUpperCase+"Component",
+            "    }",
+            "];",
+            "export const "+inputUpperCase+"Routing: ModuleWithProviders = RouterModule.forChild(routes);"].join("\n");
+        return content;
+    }
+
 
 }

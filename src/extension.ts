@@ -7,6 +7,7 @@ export function activate(context: ExtensionContext) {
   var addAngular2FilesExtended = commands.registerCommand('extension.addAngular2FilesByFrontY', (args) => {
     const addFilesExtended: AddFilesExtended = new AddFilesExtended();
     addFilesExtended.showFileNameDialog(args)
+      .then(addFilesExtended.transInput)
       .then(addFilesExtended.createFolder)
       .then(addFilesExtended.createFiles)
       .then(addFilesExtended.openFileInEditor)
