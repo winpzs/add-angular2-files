@@ -6,8 +6,22 @@ import { IFiles } from './file';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as Q from 'q';
+import { IInput } from './input';
 
 export class AddFilesExtended extends AddFiles {
+
+  public transInput(input: string): IInput {
+    return {
+      inputName: '',
+      component: false,
+      template: false,
+      css: false,
+      module: false,
+      service: false,
+      model: false,
+      spec: false
+    };
+  }
 
   // Create the new "shared" folder for model and service
   public createFolder(folderName): Q.Promise<string> {
@@ -18,7 +32,7 @@ export class AddFilesExtended extends AddFiles {
       fs.mkdir(folderName, (err) => {
         fs.mkdirSync(path.join(folderName, 'shared'));
         deferred.resolve(folderName);
-      });      
+      });
     } else {
       deferred.reject('Folder already exists');
     }
@@ -33,6 +47,33 @@ export class AddFilesExtended extends AddFiles {
     const afe: AddFilesExtended = new AddFilesExtended();
 
     // create an IFiles array including file names and contents
+    // var files: IFiles[] = [
+    //   {
+    //     name: path.join(folderName, `${inputName}.component.ts`),
+    //     content: fc.componentContent(inputName)
+    //   },
+    //   {
+    //     name: path.join(folderName, `${inputName}.component.html`),
+    //     content: fc.templateContent(inputName)
+    //   },
+    //   {
+    //     name: path.join(folderName, `${inputName}.component.css`),
+    //     content: fc.cssContent(inputName)
+    //   },
+    //   {
+    //     name: path.join(folderName, `${inputName}.component.spec.ts`),
+    //     content: fc.specContent(inputName)
+    //   },
+    //   {
+    //     name: path.join(folderName, 'shared', `${inputName}.service.ts`),
+    //     content: fc.serviceContent(inputName)
+    //   },
+    //   {
+    //     name: path.join(folderName, 'shared', `${inputName}.model.ts`),
+    //     content: fc.modelContent(inputName)
+    //   }
+    // ];
+
     var files: IFiles[] = [
       {
         name: path.join(folderName, `${inputName}.component.ts`),

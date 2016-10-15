@@ -6,16 +6,21 @@ export class FileContentsExtended {
         });
     }
 
-    public componentContent(inputName: string): string {
-        var inputUpperCase: string;       
-        inputUpperCase = inputName.charAt(0).toUpperCase() + inputName.slice(1);
+    private inputUpperCase(inputName: string): string {
+        let inputUpperCase: string = inputName.charAt(0).toUpperCase() + inputName.slice(1);
         inputUpperCase = this.camelCase(inputUpperCase);
+        return inputUpperCase;
+    }
+
+    public componentContent(inputName: string): string {
+        var inputUpperCase: string = this.inputUpperCase(inputName);
         
         var componentContent: string = "import { Component, OnInit } from '@angular/core';\n\n" +
             "import { " + inputUpperCase + " } from './shared/" + inputName + ".model';\n" +
             "import { " + inputUpperCase + "Service } from './shared/" + inputName + ".service';\n" +
             "\n" +
             "@Component({\n" +
+            "\tmoduleId: module.id,\n" +
             "\tselector: '" + inputName + "',\n" +
             "\ttemplateUrl: '" + inputName + ".component.html',\n" +
             "\tproviders: [" + inputUpperCase + "Service]\n" +
@@ -36,9 +41,8 @@ export class FileContentsExtended {
     }
 
     public serviceContent(inputName: string): string {
-        var inputUpperCase: string; 
-        inputUpperCase = inputName.charAt(0).toUpperCase() + inputName.slice(1);
-        inputUpperCase = this.camelCase(inputUpperCase);
+        var inputUpperCase: string = this.inputUpperCase(inputName);
+
         var serviceContent: string = "import { Injectable } from '@angular/core';\n" +
             "import { Http } from '@angular/http';\n" +
             "import { Observable } from 'rxjs/Observable';\n" +
@@ -59,9 +63,8 @@ export class FileContentsExtended {
     }
 
     public modelContent(inputName: string): string {
-        var inputUpperCase: string; 
-        inputUpperCase = inputName.charAt(0).toUpperCase() + inputName.slice(1);
-        inputUpperCase = this.camelCase(inputUpperCase);
+        var inputUpperCase: string = this.inputUpperCase(inputName);
+
         var modelContent: string = "export class "+ inputUpperCase +" {\n" +
             "\tid: number;\n" +
             "\tname: string;\n" +
@@ -70,9 +73,8 @@ export class FileContentsExtended {
     }
 
     public templateContent(inputName: string): string {
-        var inputUpperCase: string; 
-        inputUpperCase = inputName.charAt(0).toUpperCase() + inputName.slice(1);
-        inputUpperCase = this.camelCase(inputUpperCase);
+        var inputUpperCase: string = this.inputUpperCase(inputName);
+
         var templateContent: string = `<div class="${inputName}"> Hello ${inputUpperCase}Component! </div>`;
         return templateContent;
     }
@@ -84,9 +86,7 @@ export class FileContentsExtended {
     }
 
     public specContent(inputName: string): string {
-        var inputUpperCase: string;       
-        inputUpperCase = inputName.charAt(0).toUpperCase() + inputName.slice(1);
-        inputUpperCase = this.camelCase(inputUpperCase);
+        var inputUpperCase: string = this.inputUpperCase(inputName);
         
         var specContent: string = "import { TestBed, inject } from '@angular/core/testing';\n" +
             "import { HttpModule } from '@angular/http';\n" +
