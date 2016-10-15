@@ -4,9 +4,9 @@
     "description": "Add Angular2 files including ng2 snippets to your Visual Studio Code project By Y",
     "version": "1.0.0",
     "icon": "images/icon.png",
-    "publisher": "Front Y",
+    "publisher": "FrontY",
     "author": {
-        "name": "Front Y"
+        "name": "FrontY"
     },
     "engines": {
         "vscode": "^1.4.0"
