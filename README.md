@@ -69,16 +69,17 @@ home.routing.ts
 
 ## Options
 
-1. -c | component: component.ts
-2. -t | template: component.html
-3. -C | css: component.css
-4. -s | service: service.ts
-5. -S | spec: component.spec.ts
-6. -m | model: model.ts
-7. -M | moudle: moudle.ts
-8. -r | routing: routing.ts
-9. -f | folder: add folder
-10. -ns | noshared: Default model.ts and service.ts in the shared directory
+1. c | component: component.ts
+2. t | template: component.html
+3. C | css: component.css
+4. s | service: service.ts
+5. S | spec: component.spec.ts
+6. m | model: model.ts
+7. M | moudle: moudle.ts
+8. r | routing: routing.ts
+9. all: all
+10. f | folder: add folder
+11. ns | noshared: Default model.ts and service.ts in the shared directory
 
 ## Installation
 
